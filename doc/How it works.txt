@@ -1,0 +1,73 @@
+HTML:
+Accept	text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Encoding	gzip, deflate
+Accept-Language	en-US,en;q=0.5
+Cache-Control	max-age=0
+Connection	keep-alive
+Cookie	_ga=GA1.2.1604563140.1427304355; PHPSESSID=22kk18ummj8d8f4fh910rtmbm7; _gat=1
+Host	www.minigran.com
+User-Agent	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:36.0) Gecko/20100101 Firefox/36.0
+
+JSON:
+Accept	application/json, text/javascript, */*; q=0.01
+Accept-Encoding	gzip, deflate
+Accept-Language	en-US,en;q=0.5
+Connection	keep-alive
+Cookie	_ga=GA1.2.1604563140.1427304355; PHPSESSID=22kk18ummj8d8f4fh910rtmbm7
+Host	www.minigran.com
+Referer	http://www.minigran.com/draaienmaai/
+User-Agent	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:36.0) Gecko/20100101 Firefox/36.0
+X-Requested-With	XMLHttpRequest
+
+
+------------------------------------------------------------------------------------------------
+
+http://www.minigran.com/draaienmaai/
+
+------------------------------------------------------------------------------------------------
+
+http://www.minigran.com/game/ajax.php?function=init
+
+------------------------------------------------------------------------------------------------
+
+http://www.minigran.com/game/ajax.php?function=start
+
+------------------------------------------------------------------------------------------------
+
+http://www.minigran.com/game/ajax.php?function=click&cardindex=0
+
+Gevonde:
+	1e:		{"cardid":4,"cardmatch":false,"cardstay":[]}
+	2e:		{"cardid":4,"cardmatch":true,"cardstay":[1,2]}
+
+Einde:
+	{"cardid":8,"cardmatch":true,"cardstay":[1,2,6,8,0,10,3,13,4,14,7,11,5,15,9,12],"finish":true}
+
+------------------------------------------------------------------------------------------------
+
+http://www.minigran.com/game/ajax.php?function=end
+
+	{"printthetime":"04:34.761"}
+	
+------------------------------------------------------------------------------------------------
+
+http://www.minigran.com/game/ajax.php?function=result
+
+	{"printthetime":"04:34.761","rankposition":"809"}
+	
+------------------------------------------------------------------------------------------------
+
+http://www.minigran.com/game/ajax.php?email=help0001%40gmail.com&function=autocomplete
+	
+	{"user":[]}
+	
+------------------------------------------------------------------------------------------------
+
+http://www.minigran.com/game/ajax.php?country=NL&minigran_game=&email=help0001%40gmail.com&firstname=Peter&name=v.d.Laan&function=submit
+
+	{"rankposition":809}
+
+------------------------------------------------------------------------------------------------
+	
+http://www.minigran.com/game/ajax.php?function=rank&month=3
+
