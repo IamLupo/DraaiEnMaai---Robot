@@ -7,6 +7,11 @@ function microtime_float()
 }
 
 class Game {
+	private $email = "help0001%40gmail.com";
+	private $country = "NL";
+	private $firstname = "Peter";
+	private $lastname = "v.d.Laan";
+	
 	public $time_good = 350000;
 	public $time_bad = 2000000;
 	public $time_end = 1000000;
@@ -156,14 +161,13 @@ class Game {
 		echo "<br />";		//DEBUG
 		
 		Page::setHeader(Header::JSON, false);
-		curl_setopt(Page::$curl_sessie, CURLOPT_URL, "http://www.minigran.com/game/ajax.php?email=help0001%40gmail.com&function=autocomplete");
+		curl_setopt(Page::$curl_sessie, CURLOPT_URL, "http://www.minigran.com/game/ajax.php?email=" . $this->email . "&function=autocomplete");
 		curl_exec(Page::$curl_sessie);
 		
 		Page::setHeader(Header::JSON, false);
-		curl_setopt(Page::$curl_sessie, CURLOPT_URL, "http://www.minigran.com/game/ajax.php?country=NL&minigran_game=&email=help0001%40gmail.com&firstname=Peter&name=v.d.Laan&function=submit");
+		curl_setopt(Page::$curl_sessie, CURLOPT_URL, "http://www.minigran.com/game/ajax.php?country=" . $this->country . "&minigran_game=&email=" . $this->email . "&firstname=" . $this->firstname . "&name=" . $this->lastname . "&function=submit");
 		$output = curl_exec(Page::$curl_sessie);
-		
-		echo "ajax.php?country=NL&minigran_game=&email=help0001@gmail.com&firstname=Peter&name=Laan&function=submit<br />";
+
 		var_dump($output);	//DEBUG
 		echo "<br />";		//DEBUG
 		
