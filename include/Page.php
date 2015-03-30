@@ -23,7 +23,7 @@ class Page {
 		Page::$game = new Game();
 	}
 	
-	function goHome() {
+	public static function goHome() {
 		Page::setHeader(Header::HTML, true);
 		curl_setopt(Page::$curl_sessie, CURLOPT_URL, "http://www.minigran.com/draaienmaai/");
 		$output = curl_exec(Page::$curl_sessie);
@@ -32,11 +32,11 @@ class Page {
 		Page::setCookieWithHTTP($output);
 	}
 	
-	function Close() {
+	public static function Close() {
 		curl_close(Page::$curl_sessie);
 	}
 	
-	function getCookieWithHTTP($http) {
+	public static function getCookieWithHTTP($http) {
 			$cookie = "";
 		   
 			$carr = explode("\n",str_replace("\r\n","\n", $http));

@@ -137,11 +137,10 @@ class Game {
 	}
 	
 	function End() {
-		$new_time = microtime_float() - $this->start_time + 1;
-		echo $new_time . "<br />";
+		$new_time = microtime_float() - $this->start_time;
 		
-		//if($new_time < 12)
-		//	$this->time_end = round((12 - $new_time) * 1000000, 0);
+		if($new_time + 1 < 12)
+			$this->time_end += round((11 - $new_time) * 1000000, 0);
 		
 		usleep($this->time_end);
 		
