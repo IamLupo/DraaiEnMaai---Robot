@@ -7,7 +7,7 @@ include_once("include/Page.php");
 
 Page::Initialize();
 Page::goHome();
-Page::$game->Initialize();
+Page::$game->Initialize("help0001%40gmail.com", "NL", "Peter", "v.d.Laan");
 Page::$game->Start();
 Page::$game->Run();
 

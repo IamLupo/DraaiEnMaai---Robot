@@ -7,10 +7,10 @@ function microtime_float()
 }
 
 class Game {
-	private $email = "help0001%40gmail.com";
-	private $country = "NL";
-	private $firstname = "Peter";
-	private $lastname = "v.d.Laan";
+	private $email;
+	private $country;
+	private $firstname;
+	private $lastname;
 	
 	private $time_good = 350000;
 	private $time_bad = 2000000;
@@ -27,7 +27,13 @@ class Game {
 	private $next = -1;
 	private $failed;
 	
-	function Initialize() {
+	function Initialize($email, $country, $firstname, $lastname) {
+		$this->email = $email;
+		$this->country = $country;
+		$this->firstname = $firstname;
+		$this->lastname = $lastname;
+		
+		
 		$this->found = array(
 						false, false, false, false, 
 						false, false, false, false, 
