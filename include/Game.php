@@ -12,19 +12,20 @@ class Game {
 	private $firstname = "Peter";
 	private $lastname = "v.d.Laan";
 	
-	public $time_good = 350000;
-	public $time_bad = 2000000;
-	public $time_end = 1000000;
+	private $time_good = 350000;
+	private $time_bad = 2000000;
+	private $time_end = 1000000;
 	
-	public $start_time = 0;
+	private $start_time = 0;
 	
-	public $counter = 0;
+	private $counter = 0;
 	
-	public $found;
-	public $memory;
+	private $found;
+	private $memory;
 	
 	private $first_card_id = -1;
-	public $next = -1;
+	private $next = -1;
+	private $failed;
 	
 	function Initialize() {
 		$this->found = array(
@@ -51,7 +52,48 @@ class Game {
 		curl_setopt(Page::$curl_sessie, CURLOPT_URL, "http://www.minigran.com/game/ajax.php?function=start");
 		$this->start_time = microtime_float();
 		curl_exec(Page::$curl_sessie);
+	}
+	
+	function Run() {
+		$this->failed = 0;
 		
+		while(!$this->isFinished()) {
+			$this->next = $this->UpdateNext();
+			
+			$this->Debug();
+			
+			if(!$this->Click()) {	
+				$this->failed++;
+
+				if($this->failed >= 3) {
+					header("Refresh: 0; url=" . $_SERVER['PHP_SELF']);
+					break;
+				}
+			}
+		}
+	}
+	
+	function Debug() {
+		//DEBUG
+		echo "Next = " . $this->next . "<br />";
+		echo "Failed = " . $this->failed . "<br />";
+		for($j = 0; $j < 4; $j++) {
+			for($k = 0; $k < 4; $k++) {
+				if($this->found[($j * 4) + $k])
+					echo "1";
+				else
+					echo "0";
+			}
+			
+			echo " | ";
+			
+			for($k = 0; $k < 4; $k++) {
+				echo $this->memory[($j * 4) + $k];
+			}
+			
+			echo "<br />";
+		}
+		echo "<br />";
 	}
 	
 	function Click() {
@@ -130,15 +172,12 @@ class Game {
 		return $id;
 	}
 	
-	function CardsFound() {
-		$count = 0;
+	function isFinished() {
+		for($i = 0; $i < 16; $i++)
+			if(!$this->found[$i])
+				return false;
 		
-		for($i = 0; $i < 16; $i++) {
-			if($this->found[$i])
-				$count++;
-		}
-		
-		return $count;
+		return true;
 	}
 	
 	function End() {
